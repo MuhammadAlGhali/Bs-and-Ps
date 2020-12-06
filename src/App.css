@@ -1,3 +1,6 @@
+body{
+    background-color: #703030;
+}
 .row-header{
     margin:0px auto;
     padding:0px auto;
@@ -11,15 +14,15 @@
 }
 
 .footer{
-    background-color: #703030;
+    background-color: #CC9C2C;
     margin:0px auto;
     padding: 20px 0px 20px 0px;
 }
 .footer ul a{
-    color: #CC9C2C;
+    color: #703030;
 }
 .footer address,a{
-    color: #CC9C2C;
+    color: #703030;
 }
 .jumbotron {
     padding:70px 30px 70px 30px;
@@ -38,7 +41,12 @@ address{
     
 }
 nav span,a{
-    color: #CC9C2C;
+    color: #703030;
+}
+.carousel-item img{
+    display: flex;
+    
+    align-items: center;
 }
 .page-enter{
     opacity: 0.01;

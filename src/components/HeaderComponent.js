@@ -111,7 +111,7 @@ class Header extends Component {
                   <br /> At B's & P's you will have one of your greatest food
                   experience,
                   <br />
-                  With our mouthwatering burgers and pizzas
+                  With our delicious burgers and pizzas
                   <br />
                   <h3>Let's Get Eating!!!</h3>
                 </p>

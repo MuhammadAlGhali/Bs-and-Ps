@@ -252,3 +252,41 @@ export const postFeedback = (
       alert("Your FeedBack could not be posted\nError: " + error.message);
     });
 };
+/* CAROUSEL IMAGES FUNCTIONS AND ACTIONS */
+export const fetchCimages = () => (dispatch) => {
+  dispatch(cimagesLoading());
+
+  return fetch(baseUrl + "carouselimages")
+    .then(
+      (response) => {
+        if (response.ok) {
+          return response;
+        } else {
+          var error = new Error(
+            "Error " + response.status + ": " + response.statusText
+          );
+          error.response = response;
+          throw error;
+        }
+      },
+      (error) => {
+        var errmess = new Error(error.message);
+        throw errmess;
+      }
+    )
+    .then((response) => response.json())
+    .then((carouselimages) => dispatch(addCimages(carouselimages)))
+    .catch((error) => dispatch(cimagesFailed(error.message)));
+};
+
+export const cimagesLoading = () => ({
+  type: ActionTypes.CIMAGES_LOADING,
+});
+export const cimagesFailed = (errmess) => ({
+  type: ActionTypes.CIMAGES_FAILED,
+  payload: errmess,
+});
+export const addCimages = (carouselimages) => ({
+  type: ActionTypes.ADD_CIMAGES,
+  payload: carouselimages,
+});

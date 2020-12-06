@@ -15,6 +15,7 @@ import {
   fetchPromos,
   fetchLeaders,
   postFeedback,
+  fetchCimages,
 } from "../redux/ActionCreators";
 import { actions } from "react-redux-form";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
@@ -24,6 +25,7 @@ const mapStateToProps = (state) => {
     comments: state.comments,
     promotions: state.promotions,
     leaders: state.leaders,
+    carouselimages: state.carouselimages,
   };
 };
 const mapDispatchToProps = (dispatch) => ({
@@ -66,6 +68,9 @@ const mapDispatchToProps = (dispatch) => ({
   fetchLeaders: () => {
     dispatch(fetchLeaders());
   },
+  fetchCimages: () => {
+    dispatch(fetchCimages());
+  },
 });
 class Main extends Component {
   componentDidMount() {
@@ -73,12 +78,16 @@ class Main extends Component {
     this.props.fetchComments();
     this.props.fetchPromos();
     this.props.fetchLeaders();
+    this.props.fetchCimages();
   }
 
   render() {
     const HomePage = () => {
       return (
         <Home
+          cimages={this.props.carouselimages.carouselimages}
+          cimagesLoading={this.props.carouselimages.isLoading}
+          cimagesErrMess={this.props.carouselimages.errMess}
           dish={this.props.dishes.dishes.filter((dish) => dish.featured)[0]}
           dishesLoading={this.props.dishes.isLoading}
           dishesErrMess={this.props.dishes.errMess}
