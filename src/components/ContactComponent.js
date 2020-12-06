@@ -97,6 +97,7 @@ class Contact extends Component {
         <div className="row row-content">
           <div className="col-12">
             <h3>Send Us Your Feedback</h3>
+            <hr />
             <div className=" col-12 col-md-9">
               <Form
                 model="feedback"

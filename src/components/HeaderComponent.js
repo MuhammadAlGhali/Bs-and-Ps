@@ -15,6 +15,8 @@ import {
   FormGroup,
   Input,
   Label,
+  Row,
+  Col,
 } from "reactstrap";
 import { NavLink } from "react-router-dom";
 import "../App.css";
@@ -28,11 +30,18 @@ class Header extends Component {
     };
     this.toggleNav = this.toggleNav.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
-    this.handleLogin = this.handleLogin.bind(this);
+    this.toggleModalReserve = this.toggleModalReserve.bind(this);
+    this.handleOrder = this.handleOrder.bind(this);
+    this.handleReserve = this.handleReserve.bind(this);
   }
   toggleModal() {
     this.setState({
       isModalOpen: !this.state.isModalOpen,
+    });
+  }
+  toggleModalReserve() {
+    this.setState({
+      isReserveOpen: !this.state.isReserveOpen,
     });
   }
   toggleNav() {
@@ -40,7 +49,19 @@ class Header extends Component {
       isNavOpen: !this.state.isNavOpen,
     });
   }
-  handleLogin(event) {
+  handleOrder(event) {
+    this.toggleModal();
+    alert(
+      "Username: " +
+        this.username.value +
+        " Password: " +
+        this.password.value +
+        " Remember: " +
+        this.remember.checked
+    );
+    event.preventDefault();
+  }
+  handleReserve(event) {
     this.toggleModal();
     alert(
       "Username: " +
@@ -93,7 +114,12 @@ class Header extends Component {
               <Nav className="ml-auto" navbar>
                 <NavItem>
                   <Button outline onClick={this.toggleModal}>
-                    <span className="fa fa-sign-in fa-lg"></span> Login
+                    <span className="fa fa-pencil fa-lg"></span> Order
+                  </Button>
+                </NavItem>
+                <NavItem>
+                  <Button outline onClick={this.toggleModalReserve}>
+                    <span className="fa fa-sign-in fa-lg"></span> Reserve
                   </Button>
                 </NavItem>
               </Nav>
@@ -129,39 +155,131 @@ class Header extends Component {
           </div>
         </Jumbotron>
         <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-          <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
+          <ModalHeader toggle={this.toggleModal}>Order</ModalHeader>
           <ModalBody>
             <Form onSubmit={this.handleLogin}>
               <FormGroup>
-                <Label htmlFor="username">Username</Label>
+                <Label htmlFor="name">Name</Label>
                 <Input
                   type="text"
-                  id="username"
-                  name="username"
-                  innerRef={(input) => (this.username = input)}
+                  id="name"
+                  name="name"
+                  innerRef={(input) => (this.name = input)}
                 />
               </FormGroup>
               <FormGroup>
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="address">Address</Label>
                 <Input
-                  type="password"
-                  id="password"
-                  name="password"
-                  innerRef={(input) => (this.password = input)}
+                  type="text"
+                  id="address"
+                  name="address"
+                  innerRef={(input) => (this.address = input)}
                 />
               </FormGroup>
+              <Row form>
+                <Col md={6}>
+                  <FormGroup>
+                    <Label for="exampleCity">City</Label>
+                    <Input type="text" name="city" id="exampleCity" />
+                  </FormGroup>
+                </Col>
+                <Col md={4}>
+                  <FormGroup>
+                    <Label for="exampleState">State</Label>
+                    <Input type="text" name="state" id="exampleState" />
+                  </FormGroup>
+                </Col>
+                <Col md={2}>
+                  <FormGroup>
+                    <Label for="exampleZip">Zip</Label>
+                    <Input type="text" name="zip" id="exampleZip" />
+                  </FormGroup>
+                </Col>
+              </Row>
               <FormGroup check>
                 <Label check>
                   <Input
                     type="checkbox"
-                    name="remember"
-                    innerRef={(input) => (this.remember = input)}
+                    name="rememberaddr"
+                    innerRef={(input) => (this.rememberaddr = input)}
                   />{" "}
-                  Remember me
+                  Remember my Address
                 </Label>
               </FormGroup>
+              <FormGroup>
+                <Label htmlFor="order">Your Order</Label>
+                <Input
+                  type="textarea"
+                  id="order"
+                  name="order"
+                  innerRef={(input) => (this.order = input)}
+                />
+              </FormGroup>
               <Button type="submit" value="submit" color="primary">
-                Login
+                Order
+              </Button>
+            </Form>
+          </ModalBody>
+        </Modal>
+        <Modal
+          isOpen={this.state.isReserveOpen}
+          toggle={this.toggleModalReserve}
+        >
+          <ModalHeader toggle={this.toggleModalReserve}>
+            Reserve A Table
+          </ModalHeader>
+          <ModalBody>
+            <Form onSubmit={this.handleReserve}>
+              <FormGroup>
+                <Label htmlFor="reservename">Reservation Name</Label>
+                <Input
+                  type="text"
+                  id="reservename"
+                  name="reservename"
+                  innerRef={(input) => (this.reservename = input)}
+                />
+              </FormGroup>
+              <Row>
+                <Col md="6">
+                  <FormGroup>
+                    <Label htmlFor="time">Time</Label>
+                    <Input
+                      type="time"
+                      id="time"
+                      name="time"
+                      innerRef={(input) => (this.time = input)}
+                    />
+                  </FormGroup>
+                </Col>
+                <Col md="6">
+                  <FormGroup>
+                    <Label htmlFor="date">Date</Label>
+                    <Input
+                      type="date"
+                      id="date"
+                      name="date"
+                      innerRef={(input) => (this.date = input)}
+                    />
+                  </FormGroup>
+                </Col>
+              </Row>
+              <FormGroup>
+                <Label for="select">Select Number Of People</Label>
+                <Input type="select" name="select" id="exampleSelect">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                  <option>7</option>
+                  <option>8</option>
+                  <option>9</option>
+                  <option>10</option>
+                </Input>
+              </FormGroup>
+              <Button type="submit" value="submit" color="primary">
+                Reserve
               </Button>
             </Form>
           </ModalBody>
