@@ -41,11 +41,14 @@ address{
     
 }
 nav span,a{
+    color: #CC9C2C;
+}
+.menucard{
+    background-color: #f3c250;
     color: #703030;
 }
 .carousel-item img{
     display: flex;
-    
     align-items: center;
 }
 .page-enter{
