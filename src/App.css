@@ -1,0 +1,60 @@
+.row-header{
+    margin:0px auto;
+    padding:0px auto;
+}
+
+.row-content {
+    margin:0px auto;
+    padding: 50px 0px 50px 0px;
+    border-bottom: 1px ridge;
+    min-height:400px;
+}
+
+.footer{
+    background-color: #703030;
+    margin:0px auto;
+    padding: 20px 0px 20px 0px;
+}
+.footer ul a{
+    color: #CC9C2C;
+}
+.footer address,a{
+    color: #CC9C2C;
+}
+.jumbotron {
+    padding:70px 30px 70px 30px;
+    margin:0px auto;
+    background: #f3c250 ;
+    color:rgb(145, 36, 36);
+}
+
+address{
+    font-size:80%;
+    margin:0px;
+}
+
+.navbar-dark{
+    background-color: #703030;
+    
+}
+nav span,a{
+    color: #CC9C2C;
+}
+.page-enter{
+    opacity: 0.01;
+    transform: translateX(-100%);
+}
+.page-enter-active{
+    opacity: 1;
+    transform: translateX(0%);
+    transition: all 300ms ease-in;
+}
+.page-exit{
+    opacity: 1;
+    transform: translateX(0%);
+}
+.page-exit-exit{
+    opacity: 0.01;
+    transform: translateX(100%);
+    transition: all 300ms ease-out;
+}
