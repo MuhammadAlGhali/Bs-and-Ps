@@ -6,6 +6,8 @@ import {
   CardBody,
   CardHeader,
   Media,
+  Col,
+  Row,
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import { Loading } from "./LoadingComponent";
@@ -17,21 +19,26 @@ function RenderLeader({ leader }) {
       in
       transformProps={{ exitTransform: "scale(0.5) translateY(-50%)" }}
     >
-      <Media tag="li">
-        <Media left middle>
-          <Media
-            object
-            src={baseUrl + leader.image}
-            width="200"
-            height="200"
-            alt={leader.name}
-          />
-        </Media>
-        <Media body className="ml-5">
-          <Media heading>{leader.name}</Media>
-          <h2>{leader.designation}</h2>
-          <p>{leader.description}</p>
-        </Media>
+      <Media tag="li" className="row">
+        <Col md="6">
+          <Media left middle>
+            <Media
+              object
+              className="img-responsive"
+              src={baseUrl + leader.image}
+              width="200"
+              height="200"
+              alt={leader.name}
+            />
+          </Media>
+        </Col>
+        <Col md="6">
+          <Media body>
+            <Media heading>{leader.name}</Media>
+            <h2>{leader.designation}</h2>
+            <p>{leader.description}</p>
+          </Media>
+        </Col>
       </Media>
     </FadeTransform>
   );
@@ -67,13 +74,13 @@ function About(props) {
             </BreadcrumbItem>
             <BreadcrumbItem active>About Us</BreadcrumbItem>
           </Breadcrumb>
-          <div className="col-12">
+          <div className="col-12 text-white">
             <h3>About Us</h3>
             <hr />
           </div>
         </div>
         <div className="row row-content">
-          <div className="col-12 col-md-6">
+          <div className="col-12 col-md-6 text-white">
             <h2>Our History</h2>
             <p>
               Started in 2010, Ristorante con Fusion quickly established itself
@@ -129,7 +136,7 @@ function About(props) {
             </Card>
           </div>
         </div>
-        <div className="row row-content">
+        <div className="row row-content text-white">
           <div className="col-12">
             <h2>Corporate Leadership</h2>
           </div>

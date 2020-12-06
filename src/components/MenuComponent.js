@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  Card,
-  CardImg,
-  CardImgOverlay,
-  CardTitle,
-  Breadcrumb,
-  BreadcrumbItem,
-  Media,
-} from "reactstrap";
+import { Col, Breadcrumb, BreadcrumbItem, Media } from "reactstrap";
 import { Link } from "react-router-dom";
 import { Loading } from "./LoadingComponent";
 import { baseUrl } from "../shared/baseUrl";
@@ -20,21 +12,26 @@ function RenderMenuItem({ dish, onClick }) {
       transformProps={{ exitTransform: "scale(0.5) translateY(-50%)" }}
     >
       <Link to={`/menu/${dish.id}`} className="mediatext">
-        <Media tag="li" className="m-5">
-          <Media left middle>
-            <Media
-              object
-              src={baseUrl + dish.image}
-              width="200"
-              height="200"
-              alt={dish.name}
-            />
-          </Media>
-          <Media body className="ml-5">
-            <Media heading>{dish.name}</Media>
-            <h2>{dish.price}</h2>
-            <p>{dish.description}</p>
-          </Media>
+        <Media tag="li" className="row">
+          <Col md="6">
+            <Media middle>
+              <Media
+                object
+                src={baseUrl + dish.image}
+                className="img-fluid"
+                width="400"
+                height="400"
+                alt={dish.name}
+              />
+            </Media>
+          </Col>
+          <Col md="6">
+            <Media body className="ml-5">
+              <Media heading>{dish.name}</Media>
+              <h2>{dish.price}</h2>
+              <p>{dish.description}</p>
+            </Media>
+          </Col>
         </Media>
       </Link>
     </FadeTransform>
@@ -79,7 +76,7 @@ const Menu = (props) => {
         <div className="row row-content">
           <div className="col-12 menucard">
             <Stagger in>
-              <Media list>
+              <Media list className="p-0">
                 <Fade in>
                   {menu}
                   <br />

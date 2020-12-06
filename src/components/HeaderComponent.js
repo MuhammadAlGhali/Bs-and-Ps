@@ -51,26 +51,10 @@ class Header extends Component {
   }
   handleOrder(event) {
     this.toggleModal();
-    alert(
-      "Username: " +
-        this.username.value +
-        " Password: " +
-        this.password.value +
-        " Remember: " +
-        this.remember.checked
-    );
     event.preventDefault();
   }
   handleReserve(event) {
     this.toggleModal();
-    alert(
-      "Username: " +
-        this.username.value +
-        " Password: " +
-        this.password.value +
-        " Remember: " +
-        this.remember.checked
-    );
     event.preventDefault();
   }
   render() {
@@ -144,9 +128,7 @@ class Header extends Component {
               </div>
               <div className="col-12 col-sm-6">
                 <img
-                  className="img img-responsive"
-                  height="300"
-                  width="500"
+                  className="img img-fluid"
                   src="../assets/images/background.jpeg"
                   alt="B's & P's"
                 />
@@ -180,19 +162,34 @@ class Header extends Component {
                 <Col md={6}>
                   <FormGroup>
                     <Label for="exampleCity">City</Label>
-                    <Input type="text" name="city" id="exampleCity" />
+                    <Input
+                      type="text"
+                      name="city"
+                      id="city"
+                      innerRef={(input) => (this.city = input)}
+                    />
                   </FormGroup>
                 </Col>
                 <Col md={4}>
                   <FormGroup>
                     <Label for="exampleState">State</Label>
-                    <Input type="text" name="state" id="exampleState" />
+                    <Input
+                      type="text"
+                      name="stat"
+                      id="exampleState"
+                      innerRef={(input) => (this.stat = input)}
+                    />
                   </FormGroup>
                 </Col>
                 <Col md={2}>
                   <FormGroup>
                     <Label for="exampleZip">Zip</Label>
-                    <Input type="text" name="zip" id="exampleZip" />
+                    <Input
+                      type="text"
+                      name="zip"
+                      id="exampleZip"
+                      innerRef={(input) => (this.zip = input)}
+                    />
                   </FormGroup>
                 </Col>
               </Row>
@@ -265,7 +262,12 @@ class Header extends Component {
               </Row>
               <FormGroup>
                 <Label for="select">Select Number Of People</Label>
-                <Input type="select" name="select" id="exampleSelect">
+                <Input
+                  type="select"
+                  name="select"
+                  id="exampleSelect"
+                  innerRef={(input) => (this.select = input)}
+                >
                   <option>1</option>
                   <option>2</option>
                   <option>3</option>

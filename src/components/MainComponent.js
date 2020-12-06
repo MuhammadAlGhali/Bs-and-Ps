@@ -16,6 +16,8 @@ import {
   fetchLeaders,
   postFeedback,
   fetchCimages,
+  postOrder,
+  postReservation,
 } from "../redux/ActionCreators";
 import { actions } from "react-redux-form";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
@@ -52,6 +54,14 @@ const mapDispatchToProps = (dispatch) => ({
         message
       )
     );
+  },
+  postReservation: (name, address, city, stat, zip, rememberaddr, order) => {
+    dispatch(
+      postReservation(name, address, city, stat, zip, rememberaddr, order)
+    );
+  },
+  postOrder: (reservename, time, date, select) => {
+    dispatch(postOrder(reservename, time, date, select));
   },
   fetchDishes: () => {
     dispatch(fetchDishes());

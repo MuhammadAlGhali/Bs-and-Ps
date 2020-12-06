@@ -290,3 +290,106 @@ export const addCimages = (carouselimages) => ({
   type: ActionTypes.ADD_CIMAGES,
   payload: carouselimages,
 });
+/* ORDER POSTING */
+export const addOrder = (order) => ({
+  type: ActionTypes.ADD_ORDER,
+  payload: order,
+});
+export const postOrder = (
+  name,
+  address,
+  city,
+  stat,
+  zip,
+  rememberaddr,
+  order
+) => (dispatch) => {
+  const newOrder = {
+    name: name,
+    address: address,
+    city: city,
+    stat: stat,
+    zip: zip,
+    rememberaddr: rememberaddr,
+    order: order,
+  };
+  newOrder.date = new Date().toISOString();
+  return fetch(baseUrl + "orders", {
+    method: "POST",
+    body: JSON.stringify(newOrder),
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "same-origin",
+  })
+    .then(
+      (response) => {
+        if (response.ok) {
+          return response;
+        } else {
+          var error = new Error(
+            "Error " + response.status + ": " + response.statusText
+          );
+          error.response = response;
+          throw error;
+        }
+      },
+      (error) => {
+        var errmess = new Error(error.message);
+        throw errmess;
+      }
+    )
+    .then((response) => response.json())
+    .then((response) => dispatch(addOrder(response)))
+    .catch((error) => {
+      console.log("Post Order ", error.message);
+      alert("Your Order could not be posted\nError: " + error.message);
+    });
+};
+/* RESERVE POSTING */
+export const addReserve = (reservation) => ({
+  type: ActionTypes.ADD_RESERVATION,
+  payload: reservation,
+});
+export const postReservation = (reservename, time, date, select) => (
+  dispatch
+) => {
+  const newReservation = {
+    reservename: reservename,
+    time: time,
+    date: date,
+    select: select,
+  };
+  newReservation.date = new Date().toISOString();
+  return fetch(baseUrl + "reservation", {
+    method: "POST",
+    body: JSON.stringify(newReservation),
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "same-origin",
+  })
+    .then(
+      (response) => {
+        if (response.ok) {
+          return response;
+        } else {
+          var error = new Error(
+            "Error " + response.status + ": " + response.statusText
+          );
+          error.response = response;
+          throw error;
+        }
+      },
+      (error) => {
+        var errmess = new Error(error.message);
+        throw errmess;
+      }
+    )
+    .then((response) => response.json())
+    .then((response) => dispatch(addReserve(response)))
+    .catch((error) => {
+      console.log("Post Reservation ", error.message);
+      alert("Your Reservation could not be posted\nError: " + error.message);
+    });
+};

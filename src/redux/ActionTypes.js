@@ -14,3 +14,5 @@ export const ADD_FEEDBACK = "ADD_FEEDBACK";
 export const CIMAGES_LOADING = "CIMAGES_LOADING";
 export const CIMAGES_FAILED = "CIMAGES_FAILED";
 export const ADD_CIMAGES = "ADD_CIMAGES";
+export const ADD_ORDER = "ADD_ORDER";
+export const ADD_RESERVATION = "ADD_RESERVATION";
