@@ -1,6 +1,7 @@
 {
   "name": "bsandps",
   "version": "0.1.0",
+  "homepage": "http://MuhammadAlGhali.github.io/Bs-and-Ps",
   "private": true,
   "dependencies": {
     "bootstrap": "^4.5.3",
