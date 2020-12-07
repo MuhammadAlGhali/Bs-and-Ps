@@ -2,7 +2,6 @@
   "name": "bsandps",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://MuhammadAlGhali.github.io/restaurant-web-app",
   "dependencies": {
     "bootstrap": "^4.5.3",
     "bootstrap-social": "^5.1.1",
@@ -19,7 +18,7 @@
     "react-scripts": "^4.0.1",
     "react-transition-group": "2.3.0",
     "reactstrap": "^8.7.1",
-    "redux": "3.7.2",
+    "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "use-setstate": "0.0.4"

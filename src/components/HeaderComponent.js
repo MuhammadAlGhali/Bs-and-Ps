@@ -154,7 +154,7 @@ class Header extends Component {
         <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
           <ModalHeader toggle={this.toggleModal}>Order</ModalHeader>
           <ModalBody>
-            <Form onSubmit={this.handleOrder}>
+            <Form onSubmit={(event) => this.handleOrder(event)}>
               <FormGroup>
                 <Label htmlFor="name">Name</Label>
                 <Input
@@ -241,7 +241,7 @@ class Header extends Component {
             Reserve A Table
           </ModalHeader>
           <ModalBody>
-            <Form onSubmit={this.handleReserve}>
+            <Form onSubmit={(event) => this.handleReserve(event)}>
               <FormGroup>
                 <Label htmlFor="reservename">Reservation Name</Label>
                 <Input

@@ -7,7 +7,6 @@ import {
   CardHeader,
   Media,
   Col,
-  Row,
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import { Loading } from "./LoadingComponent";

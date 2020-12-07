@@ -10,6 +10,7 @@ import {
   CarouselItem,
   CarouselControl,
   CarouselCaption,
+  CarouselIndicators,
 } from "reactstrap";
 import { Loading } from "./LoadingComponent";
 import { baseUrl } from "../shared/baseUrl";
@@ -41,14 +42,13 @@ function RenderCard({ item, isLoading, errMess }) {
     );
 }
 function RenderCarousel({ items, isLoading, errMess }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [animating, setAnimating] = useState(false);
   if (isLoading) {
     return <Loading />;
   } else if (errMess) {
     return <h4>{errMess}</h4>;
   } else {
-    const [activeIndex, setActiveIndex] = useState(0);
-    const [animating, setAnimating] = useState(false);
-
     const next = () => {
       if (animating) return;
       const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1;
@@ -62,7 +62,8 @@ function RenderCarousel({ items, isLoading, errMess }) {
     };
 
     const goToIndex = (newIndex) => {
-      if (animating) return setActiveIndex(newIndex);
+      if (animating) return;
+      setActiveIndex(newIndex);
     };
 
     const slides = items.map((item) => {
@@ -92,6 +93,11 @@ function RenderCarousel({ items, isLoading, errMess }) {
     return (
       <Fade in>
         <Carousel activeIndex={activeIndex} next={next} previous={previous}>
+          <CarouselIndicators
+            items={items}
+            activeIndex={activeIndex}
+            onClickHandler={goToIndex}
+          />
           {slides}
           <CarouselControl
             direction="prev"
@@ -126,6 +132,7 @@ function Home(props) {
           </div>
         </div>
       </FadeTransform>
+
       <FadeTransform
         in
         transformProps={{ exitTransform: "scale(0.5) translateY(-50%)" }}

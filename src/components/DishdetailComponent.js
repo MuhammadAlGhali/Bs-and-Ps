@@ -46,7 +46,7 @@ function RenderComments({ comments, postComment, dishId }) {
   const commentList = comments.map((comment) => {
     return (
       <Fade in>
-        <li key={comment.id}>
+        <li key={comment.id} className="text-white">
           <div>
             <p>{comment.comment}</p>
             <p>
@@ -64,7 +64,7 @@ function RenderComments({ comments, postComment, dishId }) {
     );
   });
   return (
-    <div className="col-12 col-md-5 m-1">
+    <div className="col-12 col-md-5 m-1 text-white">
       <h4>Comments</h4>
       <ul className="list-unstyled">
         <Stagger in>{commentList}</Stagger>
@@ -94,7 +94,7 @@ const DishDetail = (props) => {
   } else if (props.dish != null) {
     return (
       <div className="container">
-        <div className="row">
+        <div className="row text-white">
           <Breadcrumb>
             <BreadcrumbItem>
               <Link to="/menu">Menu</Link>
@@ -150,7 +150,7 @@ class CommentForm extends Component {
     return (
       <div>
         <Button outline onClick={this.toggleModal}>
-          <span className="fa fa-pencil fa-lg"></span> Submit Comment
+          <span className="fa fa-pencil fa-lg text-white"></span> Submit Comment
         </Button>
 
         <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
