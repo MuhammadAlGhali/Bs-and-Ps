@@ -1,2 +1,1 @@
-export const baseUrl =
-  "https://my-json-server.typicode.com/MuhammadAlGhali/json-server-pb/";
+export const baseUrl = "http://localhost:3001/";
