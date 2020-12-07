@@ -55,13 +55,11 @@ const mapDispatchToProps = (dispatch) => ({
       )
     );
   },
-  postReservation: (name, address, city, stat, zip, rememberaddr, order) => {
-    dispatch(
-      postReservation(name, address, city, stat, zip, rememberaddr, order)
-    );
+  postReservation: (reservename, time, date, select) => {
+    dispatch(postReservation(reservename, time, date, select));
   },
-  postOrder: (reservename, time, date, select) => {
-    dispatch(postOrder(reservename, time, date, select));
+  postOrder: (name, address, city, stat, zip, rememberaddr, order) => {
+    dispatch(postOrder(name, address, city, stat, zip, rememberaddr, order));
   },
   fetchDishes: () => {
     dispatch(fetchDishes());
@@ -139,7 +137,10 @@ class Main extends Component {
     };
     return (
       <div>
-        <Header />
+        <Header
+          postOrder={this.props.postOrder}
+          postReservation={this.props.postReservation}
+        />
         <TransitionGroup>
           <CSSTransition
             key={this.props.location.key}

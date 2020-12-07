@@ -51,10 +51,25 @@ class Header extends Component {
   }
   handleOrder(event) {
     this.toggleModal();
+    this.props.postOrder(
+      event.name,
+      event.address,
+      event.city,
+      event.stat,
+      event.zip,
+      event.rememberaddr,
+      event.order
+    );
     event.preventDefault();
   }
   handleReserve(event) {
     this.toggleModal();
+    this.props.postReserve(
+      event.reservename,
+      event.time,
+      event.date,
+      event.select
+    );
     event.preventDefault();
   }
   render() {
@@ -139,7 +154,7 @@ class Header extends Component {
         <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
           <ModalHeader toggle={this.toggleModal}>Order</ModalHeader>
           <ModalBody>
-            <Form onSubmit={this.handleLogin}>
+            <Form onSubmit={this.handleOrder}>
               <FormGroup>
                 <Label htmlFor="name">Name</Label>
                 <Input
