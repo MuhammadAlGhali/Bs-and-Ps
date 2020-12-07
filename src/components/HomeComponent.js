@@ -75,9 +75,9 @@ function RenderCarousel({ items, isLoading, errMess }) {
           key={item.src}
         >
           <img
-            className="d-block"
+            className="img img-responsive"
             width="100%"
-            height="600"
+            height="400"
             src={baseUrl + item.src}
             alt={item.altText}
           />
@@ -91,26 +91,24 @@ function RenderCarousel({ items, isLoading, errMess }) {
       );
     });
     return (
-      <Fade in>
-        <Carousel activeIndex={activeIndex} next={next} previous={previous}>
-          <CarouselIndicators
-            items={items}
-            activeIndex={activeIndex}
-            onClickHandler={goToIndex}
-          />
-          {slides}
-          <CarouselControl
-            direction="prev"
-            directionText="Previous"
-            onClickHandler={previous}
-          />
-          <CarouselControl
-            direction="next"
-            directionText="Next"
-            onClickHandler={next}
-          />
-        </Carousel>
-      </Fade>
+      <Carousel activeIndex={activeIndex} next={next} previous={previous}>
+        <CarouselIndicators
+          items={items}
+          activeIndex={activeIndex}
+          onClickHandler={goToIndex}
+        />
+        {slides}
+        <CarouselControl
+          direction="prev"
+          directionText="Previous"
+          onClickHandler={previous}
+        />
+        <CarouselControl
+          direction="next"
+          directionText="Next"
+          onClickHandler={next}
+        />
+      </Carousel>
     );
   }
 }
@@ -118,20 +116,15 @@ function RenderCarousel({ items, isLoading, errMess }) {
 function Home(props) {
   return (
     <div className="container">
-      <FadeTransform
-        in
-        transformProps={{ exitTransform: "scale(0.5) translateY(-50%)" }}
-      >
-        <div className="row align-content-center">
-          <div className="col-12 col-md m-1">
-            <RenderCarousel
-              items={props.cimages}
-              isLoading={props.cimagesLoading}
-              errMess={props.cimagesErrMess}
-            />
-          </div>
+      <div className="row align-content-center">
+        <div className="col-12">
+          <RenderCarousel
+            items={props.cimages}
+            isLoading={props.cimagesLoading}
+            errMess={props.cimagesErrMess}
+          />
         </div>
-      </FadeTransform>
+      </div>
 
       <FadeTransform
         in
