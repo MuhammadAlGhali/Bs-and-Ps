@@ -19,6 +19,8 @@ import {
   Col,
 } from "reactstrap";
 import { NavLink } from "react-router-dom";
+import logo from "../images/logo.png";
+import background from "../images/background.jpeg";
 import "../App.css";
 
 class Header extends Component {
@@ -79,12 +81,7 @@ class Header extends Component {
           <div className="container">
             <NavbarToggler onClick={this.toggleNav} />
             <NavbarBrand className="mr-auto" href="/">
-              <img
-                src="../assets/images/logo.png"
-                height="30"
-                width="41"
-                alt="Bs&Ps"
-              />
+              <img src={logo} height="30" width="41" alt="Bs&Ps" />
             </NavbarBrand>
             <Collapse navbar isOpen={this.state.isNavOpen}>
               <Nav navbar>
@@ -142,11 +139,7 @@ class Header extends Component {
                 </p>
               </div>
               <div className="col-12 col-sm-6">
-                <img
-                  className="img img-fluid"
-                  src="../assets/images/background.jpeg"
-                  alt="B's & P's"
-                />
+                <img className="img-fluid" src={background} alt="B's & P's" />
               </div>
             </div>
           </div>
