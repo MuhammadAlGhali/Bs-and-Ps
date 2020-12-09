@@ -7,3 +7,18 @@ export const InitialFeedback = {
   contactType: "Tel.",
   message: "",
 };
+export const InitialOrder = {
+  name: "",
+  address: "",
+  city: "",
+  stat: "",
+  zip: "",
+  rememberaddr: false,
+  order: "",
+};
+export const InitialReservation = {
+  reservename: "",
+  time: "",
+  date: "",
+  select: "1",
+};

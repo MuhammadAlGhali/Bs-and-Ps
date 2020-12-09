@@ -62,17 +62,15 @@ class Header extends Component {
       event.rememberaddr,
       event.order
     );
-    event.preventDefault();
   }
   handleReserve(event) {
     this.toggleModal();
-    this.props.postReserve(
+    this.props.postReservation(
       event.reservename,
       event.time,
       event.date,
       event.select
     );
-    event.preventDefault();
   }
   render() {
     return (

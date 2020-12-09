@@ -7,7 +7,7 @@ import { Carouselimages } from "./carouselimages";
 import { createForms } from "react-redux-form";
 import thunk from "redux-thunk";
 import logger from "redux-logger";
-import { InitialFeedback } from "./forms";
+import { InitialFeedback, InitialOrder, InitialReservation } from "./forms";
 
 export const ConfigureStore = () => {
   const store = createStore(
@@ -19,6 +19,8 @@ export const ConfigureStore = () => {
       carouselimages: Carouselimages,
       ...createForms({
         feedback: InitialFeedback,
+        order: InitialOrder,
+        reservation: InitialReservation,
       }),
     }),
     applyMiddleware(thunk, logger)
